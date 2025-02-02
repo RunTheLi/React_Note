@@ -1,3 +1,5 @@
+const { prototype } = require("events");
+
 // ## Compose React Components ##
 class Fruits extends React.Component {
   constructor(props) {
@@ -212,3 +214,67 @@ class App extends React.Component {
       );
     }
   };
+
+
+// ## Access Props Using this.props ##
+=>
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+  render() {
+    return (
+        <div>
+            { /* Change code below this line */ }
+            <Welcome name="John"/>
+            { /* Change code above this line */ }
+        </div>
+    );
+  }
+};
+
+class Welcome extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+  render() {
+    return (
+        <div>
+          { /* Change code below this line */ }
+          <p>Hello, <strong>{this.props.name}</strong>!</p>
+          { /* Change code above this line */ }
+        </div>
+    );
+  }
+};
+
+
+// ## Using Props with Stateless Functional Components ##
+class CampSite extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <Camper/>
+      </div>
+    );
+  }
+};
+// Change code below this line
+class Camper extends React.Component {
+  render() {
+    return <p>{this.props.name}</p>;
+  }
+}
+
+Camper.defaultProps = {
+  name: "CampeBot",
+};
+
+Camper.propTypes = {
+  name: PropTypes.string.isRequired,
+};
