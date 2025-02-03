@@ -217,7 +217,6 @@ class App extends React.Component {
 
 
 // ## Access Props Using this.props ##
-=>
 class App extends React.Component {
   constructor(props) {
     super(props);
