@@ -271,7 +271,7 @@ class Camper extends React.Component {
 }
 
 Camper.defaultProps = {
-  name: "CampeBot",
+  name: "CamperBot",
 };
 
 Camper.propTypes = {
