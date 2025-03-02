@@ -59,7 +59,9 @@ class Results extends React.Component {
   }
   render() {
     {/* Change code below this line */}
-    return <h1></h1>;
+    return <h1>
+    {this.props.fiftyFifty ? 'You Win!' : 'You Lose!'}
+    </h1>;
     {/* Change code above this line */}
   }
 }
@@ -76,20 +78,130 @@ class GameOfChance extends React.Component {
     this.setState(prevState => {
       // Complete the return statement:
       return {
-        counter: prevState
+        counter: prevState.counter + 1,
       }
     });
   }
   render() {
-    const expression = null; // Change this line
+    const expression = Math.random() >= .5; // Change this line
     return (
       <div>
         <button onClick={this.handleClick}>Play Again</button>
         {/* Change code below this line */}
-
+        <Results fiftyFifty={expression} />
         {/* Change code above this line */}
         <p>{'Turn: ' + this.state.counter}</p>
       </div>
     );
   }
 }
+
+// Change Inline CSS Conditionally Based on Component State
+class GateKeeper extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    this.setState({ input: event.target.value })
+  }
+  render() {
+    let inputStyle = {
+      border: '1px solid black'
+    };
+    // Change code below this line
+    if (this.state.input.length > 15){
+      inputStyle = {
+        border: "3px solid red"
+      }
+    }
+    // Change code above this line
+    return (
+      <div>
+        <h3>Don't Type Too Much:</h3>
+        <input
+          type="text"
+          style={inputStyle}
+          value={this.state.input}
+          onChange={this.handleChange} />
+      </div>
+    );
+  }
+};
+
+// Use Array.map() to Dynamically Render Elements
+const textAreaStyles = {
+  width: 235,
+  margin: 5
+};
+
+class MyToDoList extends React.Component {
+  constructor(props) {
+    super(props);
+    // Change code below this line
+    this.state = {
+      userInput: '',
+      toDoList: []
+    }
+    // Change code above this line
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleSubmit() {
+    const itemsArray = this.state.userInput.split(',');
+    this.setState({
+      toDoList: itemsArray
+    });
+  }
+  handleChange(e) {
+    this.setState({
+      userInput: e.target.value
+    });
+  }
+  render() {
+    const items = this.state.toDoList.map((item) => (
+      <li>{item.trim()}</li>
+    )); // Change this line
+    return (
+      <div>
+        <textarea
+          onChange={this.handleChange}
+          value={this.state.userInput}
+          style={textAreaStyles}
+          placeholder='Separate Items With Commas'
+        />
+        <br />
+        <button onClick={this.handleSubmit}>Create List</button>
+        <h1>My "To Do" List:</h1>
+        <ul>{items}</ul>
+      </div>
+    );
+  }
+}
+
+//Give Sibling Elements a Unique Key Attribute
+const frontEndFrameworks = [
+  'React',
+  'Angular',
+  'Ember',
+  'Knockout',
+  'Backbone',
+  'Vue'
+];
+
+function Frameworks() {
+  const renderFrameworks = frontEndFrameworks.map((item, index) => (
+    <li key={index}>{item.trim()}</li>
+  )); // Change this line
+  return (
+    <div>
+      <h1>Popular Front End JavaScript Frameworks</h1>
+      <ul>
+        {renderFrameworks}
+      </ul>
+    </div>
+  );
+};
