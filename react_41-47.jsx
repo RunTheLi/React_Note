@@ -8,7 +8,10 @@ const inputStyle = {
     constructor(props) {
       super(props);
       // Change code below this line
-  
+      this.state = {
+        input: '',
+        userAge: ''
+      };
       // Change code above this line
       this.submit = this.submit.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -38,9 +41,12 @@ const inputStyle = {
             onChange={this.handleChange}
           />
           <br />
-          {/* Change code below this line */}
-  
-          {/* Change code above this line */}
+          {userAge === ''
+          ? <button onClick={this.submit}>Submit</button>
+          : userAge >= 18
+            ? <button>You May Enter</button>
+            : <button>You Shall Not Pass</button>
+        }
         </div>
       );
     }

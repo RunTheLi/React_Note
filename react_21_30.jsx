@@ -126,9 +126,9 @@ class MyComponent extends React.Component {
       // Change code above this line
     }
     // Change code below this line
-  toggleVisibility() {
-      this.setState((prevState) => ({
-        visibility: !prevState.visibility
+    toggleVisibility() {
+      this.setState(state => ({
+        visibility: !state.visibility  // Toggle the visibility state
       }));
     }
     // Change code above this line
@@ -161,7 +161,7 @@ class MyComponent extends React.Component {
       // Change code below this line
       this.increment = this.increment.bind(this);
       this.decrement = this.decrement.bind(this);
-      this.rerset = this.erset.bind(this);
+      this.rerset = this.reset.bind(this);
       // Change code above this line
     }
     // Change code below this line
