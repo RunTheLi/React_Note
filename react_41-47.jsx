@@ -96,7 +96,7 @@ class GameOfChance extends React.Component {
   }
 }
 
-// Change Inline CSS Conditionally Based on Component State
+// ##Change Inline CSS Conditionally Based on Component State
 class GateKeeper extends React.Component {
   constructor(props) {
     super(props);
@@ -132,7 +132,7 @@ class GateKeeper extends React.Component {
   }
 };
 
-// Use Array.map() to Dynamically Render Elements
+// ##Use Array.map() to Dynamically Render Elements
 const textAreaStyles = {
   width: 235,
   margin: 5
@@ -182,7 +182,7 @@ class MyToDoList extends React.Component {
   }
 }
 
-//Give Sibling Elements a Unique Key Attribute
+// ##Give Sibling Elements a Unique Key Attribute
 const frontEndFrameworks = [
   'React',
   'Angular',
@@ -205,3 +205,73 @@ function Frameworks() {
     </div>
   );
 };
+
+// ##Use Array.filter() to Dynamically Filter an Array
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [
+        {
+          username: 'Jeff',
+          online: true
+        },
+        {
+          username: 'Alan',
+          online: false
+        },
+        {
+          username: 'Mary',
+          online: true
+        },
+        {
+          username: 'Jim',
+          online: false
+        },
+        {
+          username: 'Sara',
+          online: true
+        },
+        {
+          username: 'Laura',
+          online: true
+        }
+      ]
+    };
+  }
+  render() {
+    const usersOnline = this.state.users.filter(user => user.online); // Change this line
+    const renderOnline = usersOnline.map((user, index) => (
+      <li key={index}>{user.username}</li>
+    )); // Change this line
+    return (
+      <div>
+        <h1>Current Online Users:</h1>
+        <ul>{renderOnline}</ul>
+      </div>
+    );
+  }
+}
+
+// ##Render React on the Server with renderToString
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <div/>
+  }
+};
+
+// ##Change code below this line
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <div/>
+  }
+};
+
+// Change code below this line
+ReactDOMServer.renderToString(<App />);
